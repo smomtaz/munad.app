@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Munad - مُناد | Your Call to Prayer</title>
+    <meta name="description" content="Your faithful companion for precise prayer times and Qibla direction. A beautiful Progressive Web App for Muslims.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <span class="logo">🌙</span>
+                <span class="brand-name">Munad <span class="arabic-small">مُناد</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#about">About</a>
+                <a href="#install" class="cta-button">Install App</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-pattern"></div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="brand-large">Munad</span>
+                    <span class="arabic-title">مُناد</span>
+                </h1>
+                <p class="hero-subtitle">Your Call to Prayer</p>
+                <p class="hero-description">
+                    A beautiful companion for precise prayer times, Qibla direction, and adhan notifications. 
+                    Built with care for the Muslim community.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#install" class="btn-primary">
+                        <span>Install Munad</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </a>
+                    <a href="#features" class="btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="app-preview">
+                            <div class="preview-header">
+                                <div class="time">3:42</div>
+                                <div class="islamic-date">15 Rajab 1446</div>
+                            </div>
+                            <div class="next-prayer">
+                                <div class="prayer-label">Next Prayer</div>
+                                <div class="prayer-name">Asr <span class="arabic-text">العصر</span></div>
+                                <div class="prayer-time">4:23 PM</div>
+                                <div class="countdown">in 41 minutes</div>
+                            </div>
+                            <div class="prayer-times-list">
+                                <div class="prayer-item completed">
+                                    <span>Fajr</span>
+                                    <span>5:47 AM</span>
+                                </div>
+                                <div class="prayer-item completed">
+                                    <span>Dhuhr</span>
+                                    <span>12:15 PM</span>
+                                </div>
+                                <div class="prayer-item active">
+                                    <span>Asr</span>
+                                    <span>4:23 PM</span>
+                                </div>
+                                <div class="prayer-item">
+                                    <span>Maghrib</span>
+                                    <span>7:08 PM</span>
+                                </div>
+                                <div class="prayer-item">
+                                    <span>Isha</span>
+                                    <span>8:34 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wave-divider">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Features <span class="arabic-text">المميزات</span></h2>
+                <p class="section-subtitle">Everything you need for your daily prayers</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up">
+                    <div class="feature-icon mosque">🕌</div>
+                    <h3>Precise Prayer Times</h3>
+                    <p class="arabic-label">أوقات الصلاة الدقيقة</p>
+                    <p>Automatic calculation based on your location with multiple methods (ISNA, Muslim World League, and more). Customize for your madhab and local adjustments.</p>
+                    <ul class="feature-list">
+                        <li>✓ Auto-location detection</li>
+                        <li>✓ Multiple calculation methods</li>
+                        <li>✓ Madhab customization</li>
+                        <li>✓ Manual time adjustments</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon compass">🧭</div>
+                    <h3>Qibla Compass</h3>
+                    <p class="arabic-label">بوصلة القبلة</p>
+                    <p>Real-time direction to the Kaaba using your device sensors. Beautiful visual compass with precise degree indication that works offline.</p>
+                    <ul class="feature-list">
+                        <li>✓ Real-time direction</li>
+                        <li>✓ Visual compass display</li>
+                        <li>✓ Degree precision</li>
+                        <li>✓ Works offline</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon notification">🔔</div>
+                    <h3>Smart Notifications</h3>
+                    <p class="arabic-label">الإخطارات الذكية</p>
+                    <p>Customizable adhan notifications with authentic muezzin audio. Set reminders before prayer times to help you prepare.</p>
+                    <ul class="feature-list">
+                        <li>✓ Authentic adhan audio</li>
+                        <li>✓ Pre-prayer reminders</li>
+                        <li>✓ Custom notification sounds</li>
+                        <li>✓ Flexible scheduling</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon pwa">📱</div>
+                    <h3>Progressive Web App</h3>
+                    <p class="arabic-label">تطبيق ويب متقدم</p>
+                    <p>Install directly from your browser - no app store needed. Works offline, uses minimal storage, runs on any modern device.</p>
+                    <ul class="feature-list">
+                        <li>✓ No app store required</li>
+                        <li>✓ Works offline</li>
+                        <li>✓ Minimal storage</li>
+                        <li>✓ Cross-platform</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon privacy">🔒</div>
+                    <h3>Privacy & Trust</h3>
+                    <p class="arabic-label">الخصوصية والثقة</p>
+                    <p>Your location data stays on your device. No tracking, no ads, no data collection. Just pure intention.</p>
+                    <ul class="feature-list">
+                        <li>✓ Local data storage</li>
+                        <li>✓ No tracking</li>
+                        <li>✓ No advertisements</li>
+                        <li>✓ Open approach</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon update">🌙</div>
+                    <h3>Always Improving</h3>
+                    <p class="arabic-label">التحسين المستمر</p>
+                    <p>Regular updates guided by community feedback and Islamic principles. Built by a Muslim, for Muslims.</p>
+                    <ul class="feature-list">
+                        <li>✓ Regular updates</li>
+                        <li>✓ Community-driven</li>
+                        <li>✓ Islamic principles</li>
+                        <li>✓ Active development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Why Munad? <span class="arabic-text">لماذا مُناد؟</span></h2>
+                    <div class="about-cards">
+                        <div class="about-card">
+                            <div class="about-icon">🤲</div>
+                            <h3>Built with Care</h3>
+                            <p>Developed by a fellow Muslim who understands the importance of never missing Salah. Every feature is crafted with attention to Islamic principles and the needs of the community.</p>
+                        </div>
+                        <div class="about-card">
+                            <div class="about-icon">🔒</div>
+                            <h3>Privacy & Trust</h3>
+                            <p>Your data remains yours - no tracking, no ads, pure intention. We believe in respecting your privacy as a fundamental right and religious principle.</p>
+                        </div>
+                        <div class="about-card">
+                            <div class="about-icon">🌙</div>
+                            <h3>Always Improving</h3>
+                            <p>Regular updates guided by community feedback and Islamic principles. Your suggestions help make Munad better for the entire Ummah.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Simple. Beautiful. Faithful.</h2>
+            <p class="section-subtitle">Get started in three easy steps</p>
+            
+            <div class="steps">
+                <div class="step" data-aos="fade-right">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Allow Location</h3>
+                        <p>Grant location access for automatic prayer time calculation based on your exact position.</p>
+                    </div>
+                </div>
+                <div class="step" data-aos="fade-right" data-aos-delay="100">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Customize Settings</h3>
+                        <p>Choose your calculation method, madhab, and notification preferences to match your needs.</p>
+                    </div>
+                </div>
+                <div class="step" data-aos="fade-right" data-aos-delay="200">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Never Miss Prayer</h3>
+                        <p>Receive timely notifications and access Qibla direction anytime, anywhere.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Install Section -->
+    <section id="install" class="install">
+        <div class="container">
+            <div class="install-content">
+                <h2 class="section-title">Start Your Journey</h2>
+                <p class="install-description">Install Munad on your device and never miss a prayer again</p>
+                
+                <div class="install-options">
+                    <div class="install-card">
+                        <h3>Install Now</h3>
+                        <p>Works on all modern browsers and devices</p>
+                        <button class="btn-primary btn-install">
+                            <span>Install Munad</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="install-card">
+                        <h3>Quick Access</h3>
+                        <p>Scan QR code with your mobile device</p>
+                        <div class="qr-placeholder">
+                            <div class="qr-code">
+                                <svg viewBox="0 0 100 100" width="150" height="150">
+                                    <rect width="100" height="100" fill="white"/>
+                                    <path d="M10,10 h20 v20 h-20 z M40,10 h10 v10 h-10 z M60,10 h30 v30 h-30 z" fill="black"/>
+                                    <path d="M10,40 h10 v10 h-10 z M30,40 h10 v10 h-10 z M50,40 h10 v10 h-10 z M70,40 h10 v10 h-10 z" fill="black"/>
+                                    <path d="M10,60 h30 v30 h-30 z M50,60 h10 v10 h-10 z M70,60 h20 v20 h-20 z" fill="black"/>
+                                    <path d="M50,80 h10 v10 h-10 z" fill="black"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="compatibility">
+                    <p>Compatible with:</p>
+                    <div class="platform-icons">
+                        <span title="iOS">📱</span>
+                        <span title="Android">🤖</span>
+                        <span title="Desktop">💻</span>
+                        <span title="Tablet">📲</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-pattern"></div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-top">
+                    <div class="basmala">بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</div>
+                </div>
+                
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h4>Munad <span class="arabic-small">مُناد</span></h4>
+                        <p>Your faithful companion for precise prayer times and Qibla direction.</p>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#install">Install</a></li>
+                            <li><a href="#privacy">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="#faq">FAQ</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                            <li><a href="#feedback">Feedback</a></li>
+                            <li><a href="#github">GitHub</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h4>Connect</h4>
+                        <p>Have suggestions or feedback? We'd love to hear from you.</p>
+                        <a href="mailto:feedback@munad.app" class="footer-email">feedback@munad.app</a>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>Made with ❤️ for the Ummah</p>
+                    <p class="copyright">© 2025 Munad. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
