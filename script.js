@@ -12,6 +12,90 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Screenshot Carousel
+let currentSlide = 0;
+const slides = document.querySelectorAll('.screenshot-slide');
+const dots = document.querySelectorAll('.dot');
+const track = document.querySelector('.carousel-track');
+const prevBtn = document.querySelector('.carousel-btn.prev');
+const nextBtn = document.querySelector('.carousel-btn.next');
+
+function updateCarousel() {
+    if (track) {
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    }
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateCarousel();
+}
+
+function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    updateCarousel();
+}
+
+// Button controls
+if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+// Dot controls
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        currentSlide = index;
+        updateCarousel();
+    });
+});
+
+// Auto-advance carousel
+let autoSlideInterval = setInterval(nextSlide, 4000);
+
+// Pause auto-advance on hover
+const carousel = document.querySelector('.screenshot-carousel');
+if (carousel) {
+    carousel.addEventListener('mouseenter', () => {
+        clearInterval(autoSlideInterval);
+    });
+    
+    carousel.addEventListener('mouseleave', () => {
+        autoSlideInterval = setInterval(nextSlide, 4000);
+    });
+}
+
+// Swipe support for mobile
+let touchStartX = 0;
+let touchEndX = 0;
+
+if (carousel) {
+    carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    carousel.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipeGesture();
+    });
+}
+
+function handleSwipeGesture() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+            nextSlide();
+        } else {
+            prevSlide();
+        }
+    }
+}
+
 // Navbar scroll effect
 let lastScroll = 0;
 const navbar = document.querySelector('.navbar');
@@ -132,14 +216,14 @@ updatePrayerTimes();
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const heroPattern = document.querySelector('.hero-pattern');
-    const phoneMockup = document.querySelector('.phone-mockup');
+    const carousel = document.querySelector('.screenshot-carousel');
     
     if (heroPattern) {
         heroPattern.style.transform = `translateY(${scrolled * 0.5}px)`;
     }
     
-    if (phoneMockup && scrolled < window.innerHeight) {
-        phoneMockup.style.transform = `translateY(${-scrolled * 0.2}px)`;
+    if (carousel && scrolled < window.innerHeight) {
+        carousel.style.transform = `translateY(${-scrolled * 0.1}px)`;
     }
 });
 

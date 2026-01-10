@@ -231,146 +231,120 @@ body {
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.95);
-    color: #0D7377;
-    border: 2px solid #FFFFFF;
+    background: rgba(255, 255, 255, 0.15);
+    color: #FFFFFF;
+    border: 2px solid rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     font-weight: 600;
 }
 
 .btn-secondary:hover {
-    background: #FFFFFF;
+    background: rgba(255, 255, 255, 0.25);
     border-color: #FFFFFF;
     transform: translateY(-2px);
 }
 
-/* Phone Mockup */
-.phone-mockup {
+/* Screenshot Carousel */
+.screenshot-carousel {
     position: relative;
-    width: 300px;
-    height: 600px;
-    background: #1a1a1a;
-    border-radius: 40px;
-    padding: 15px;
-    box-shadow: 
-        0 25px 50px rgba(0, 0, 0, 0.3),
-        0 0 0 1px rgba(255, 255, 255, 0.1);
+    width: 350px;
+    height: 700px;
     margin: 0 auto;
-    animation: float 6s ease-in-out infinite;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-}
-
-.phone-screen {
+.carousel-container {
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, #0D7377 0%, #0A5F62 100%);
-    border-radius: 30px;
     overflow: hidden;
-    position: relative;
+    border-radius: 40px;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.3),
+        0 0 0 8px #1a1a1a,
+        0 0 0 9px rgba(255, 255, 255, 0.1);
+    background: #1a1a1a;
 }
 
-.app-preview {
-    padding: 20px;
-    color: white;
-}
-
-.preview-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.time {
-    font-size: 16px;
-    font-weight: 500;
-    opacity: 0.95;
-}
-
-.islamic-date {
-    font-family: var(--font-arabic);
-    font-size: 13px;
-    opacity: 0.85;
-    margin-top: 5px;
-}
-
-.next-prayer {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    padding: 25px;
-    text-align: center;
-    margin-bottom: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-}
-
-.prayer-label {
-    font-size: 12px;
-    opacity: 0.9;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 500;
-}
-
-.prayer-name {
-    font-size: 32px;
-    font-weight: 700;
-    margin: 10px 0;
-    color: #FFFFFF;
-}
-
-.arabic-text {
-    font-family: var(--font-arabic);
-    font-size: 0.8em;
-    opacity: 0.95;
-    margin-left: 10px;
-}
-
-.prayer-time {
-    font-size: 28px;
-    font-weight: 400;
-    color: #FFE066;
-}
-
-.countdown {
-    font-size: 14px;
-    opacity: 0.85;
-    margin-top: 10px;
-    font-weight: 500;
-}
-
-.prayer-times-list {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 15px;
-    padding: 15px;
-}
-
-.prayer-item {
+.carousel-track {
     display: flex;
-    justify-content: space-between;
-    padding: 12px 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    opacity: 0.75;
-    font-size: 15px;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
 }
 
-.prayer-item:last-child {
-    border-bottom: none;
+.screenshot-slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.prayer-item.active {
-    opacity: 1;
-    background: rgba(255, 224, 102, 0.2);
-    border-radius: 8px;
-    border: none;
-    font-weight: 600;
-    color: #FFFFFF;
+.app-screenshot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 32px;
 }
 
-.prayer-item.completed {
-    opacity: 0.5;
+.carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: #FFD700;
+    width: 30px;
+    border-radius: 5px;
+}
+
+.dot:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    background: rgba(255, 215, 0, 0.3);
+    border-color: #FFD700;
+}
+
+.carousel-btn.prev {
+    left: -60px;
+}
+
+.carousel-btn.next {
+    right: -60px;
 }
 
 /* Wave Divider */
@@ -849,9 +823,23 @@ body {
         flex-direction: column;
     }
     
-    .phone-mockup {
-        width: 250px;
-        height: 500px;
+    .screenshot-carousel {
+        width: 280px;
+        height: 560px;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+    
+    .carousel-btn.prev {
+        left: -50px;
+    }
+    
+    .carousel-btn.next {
+        right: -50px;
     }
     
     .section-title {
@@ -878,8 +866,13 @@ body {
         font-size: 28px;
     }
     
-    .phone-mockup {
-        width: 200px;
-        height: 400px;
+    .screenshot-carousel {
+        width: 250px;
+        height: 500px;
+    }
+    
+    .carousel-btn.prev,
+    .carousel-btn.next {
+        display: none;
     }
 }
