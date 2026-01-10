@@ -15,13 +15,13 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-brand">
-                <span class="logo">🌙</span>
+                <img src="logo.jpeg" alt="Munad Logo" class="logo">
                 <span class="brand-name">Munad <span class="arabic-small">مُناد</span></span>
             </div>
             <div class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#about">About</a>
-                <a href="#install" class="cta-button">Install App</a>
+                <a href="https://munad.vercel.app/" target="_blank" class="cta-button">Access App</a>
             </div>
         </div>
     </nav>
@@ -41,12 +41,12 @@
                     Built with care for the Muslim community.
                 </p>
                 <div class="hero-buttons">
-                    <a href="#install" class="btn-primary">
-                        <span>Install Munad</span>
+                    <a href="https://munad.vercel.app/" target="_blank" class="btn-primary">
+                        <span>Access Munad</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
                         </svg>
                     </a>
                     <a href="#features" class="btn-secondary">Learn More</a>
@@ -255,20 +255,20 @@
         <div class="container">
             <div class="install-content">
                 <h2 class="section-title">Start Your Journey</h2>
-                <p class="install-description">Install Munad on your device and never miss a prayer again</p>
+                <p class="install-description">Access Munad on your device and never miss a prayer again</p>
                 
                 <div class="install-options">
                     <div class="install-card">
-                        <h3>Install Now</h3>
+                        <h3>Access Now</h3>
                         <p>Works on all modern browsers and devices</p>
-                        <button class="btn-primary btn-install">
-                            <span>Install Munad</span>
+                        <a href="https://munad.vercel.app/" target="_blank" class="btn-primary btn-install">
+                            <span>Access App</span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                <polyline points="7 10 12 15 17 10"></polyline>
-                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
                             </svg>
-                        </button>
+                        </a>
                     </div>
                     
                     <div class="install-card">
@@ -276,13 +276,7 @@
                         <p>Scan QR code with your mobile device</p>
                         <div class="qr-placeholder">
                             <div class="qr-code">
-                                <svg viewBox="0 0 100 100" width="150" height="150">
-                                    <rect width="100" height="100" fill="white"/>
-                                    <path d="M10,10 h20 v20 h-20 z M40,10 h10 v10 h-10 z M60,10 h30 v30 h-30 z" fill="black"/>
-                                    <path d="M10,40 h10 v10 h-10 z M30,40 h10 v10 h-10 z M50,40 h10 v10 h-10 z M70,40 h10 v10 h-10 z" fill="black"/>
-                                    <path d="M10,60 h30 v30 h-30 z M50,60 h10 v10 h-10 z M70,60 h20 v20 h-20 z" fill="black"/>
-                                    <path d="M50,80 h10 v10 h-10 z" fill="black"/>
-                                </svg>
+                                <img src="qr-code.png" alt="QR Code to Munad App" width="150" height="150">
                             </div>
                         </div>
                     </div>
@@ -291,10 +285,18 @@
                 <div class="compatibility">
                     <p>Compatible with:</p>
                     <div class="platform-icons">
-                        <span title="iOS">📱</span>
-                        <span title="Android">🤖</span>
-                        <span title="Desktop">💻</span>
-                        <span title="Tablet">📲</span>
+                        <svg class="platform-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <title>iOS</title>
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                        <svg class="platform-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <title>Android</title>
+                            <path d="M17.523 15.341c-.826 0-1.5-.673-1.5-1.499 0-.827.674-1.499 1.5-1.499.827 0 1.5.672 1.5 1.499 0 .826-.673 1.499-1.5 1.499zm-11.046 0c-.827 0-1.5-.673-1.5-1.499 0-.827.673-1.499 1.5-1.499.826 0 1.5.672 1.5 1.499 0 .826-.674 1.499-1.5 1.499zm15.523-1.499c0-5.522-4.477-10-10-10S2 8.32 2 13.842c0 4.167 2.551 7.729 6.156 9.235v-6.834H5.468v-2.401h2.688V11.37c0-2.655 1.582-4.117 3.995-4.117 1.158 0 2.368.207 2.368.207v2.603h-1.334c-1.314 0-1.724.815-1.724 1.652v1.986h2.933l-.469 2.401h-2.464v6.834C19.45 21.571 22 18.009 22 13.842z"/>
+                        </svg>
+                        <svg class="platform-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                            <title>Windows</title>
+                            <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/>
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -339,18 +341,10 @@
                     <div class="footer-col">
                         <h4>Connect</h4>
                         <p>Have suggestions or feedback? We'd love to hear from you.</p>
-                        <a href="mailto:feedback@munad.app" class="footer-email">feedback@munad.app</a>
+                        <a href="/cdn-cgi/l/email-protection#71171414151310121a311c041f10155f100101" class="footer-email"><span class="__cf_email__" data-cfemail="086e6d6d6c6a696b6348657d66696c26697878">[email&#160;protected]</span></a>
                     </div>
                 </div>
                 
                 <div class="footer-bottom">
                     <p>Made with ❤️ for the Ummah</p>
-                    <p class="copyright">© 2025 Munad. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+                    <p class="copyright">© 2025 Munad. All rights reserve

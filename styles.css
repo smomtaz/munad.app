@@ -77,7 +77,9 @@ body {
 }
 
 .logo {
-    font-size: 32px;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
 }
 
 .arabic-small {
@@ -660,6 +662,11 @@ body {
     border-radius: 15px;
 }
 
+.qr-code img {
+    display: block;
+    border-radius: 8px;
+}
+
 .compatibility {
     margin-top: 40px;
 }
@@ -672,9 +679,21 @@ body {
 
 .platform-icons {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     justify-content: center;
-    font-size: 32px;
+    align-items: center;
+}
+
+.platform-icon {
+    width: 40px;
+    height: 40px;
+    color: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+}
+
+.platform-icon:hover {
+    color: #FFD700;
+    transform: scale(1.1);
 }
 
 /* Footer */

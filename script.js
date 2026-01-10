@@ -55,7 +55,7 @@ document.querySelectorAll('[data-aos-delay]').forEach((el, index) => {
 });
 
 // Install button functionality
-const installButtons = document.querySelectorAll('.btn-install, .btn-primary');
+const installButtons = document.querySelectorAll('.btn-install');
 let deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (e) => {
@@ -64,38 +64,35 @@ window.addEventListener('beforeinstallprompt', (e) => {
     // Stash the event so it can be triggered later
     deferredPrompt = e;
     
-    // Update button text to show it's installable
-    installButtons.forEach(btn => {
-        if (btn.querySelector('span')) {
-            btn.querySelector('span').textContent = 'Install Munad';
-        }
-    });
+    // Show PWA install option if available
+    console.log('PWA install available');
 });
 
 installButtons.forEach(btn => {
-    btn.addEventListener('click', async (e) => {
-        e.preventDefault();
-        
-        if (deferredPrompt) {
-            // Show the install prompt
-            deferredPrompt.prompt();
+    // For browsers that support PWA installation
+    if (deferredPrompt) {
+        btn.addEventListener('click', async (e) => {
+            e.preventDefault();
             
-            // Wait for the user to respond to the prompt
-            const { outcome } = await deferredPrompt.userChoice;
-            
-            if (outcome === 'accepted') {
-                console.log('User accepted the install prompt');
-            } else {
-                console.log('User dismissed the install prompt');
+            if (deferredPrompt) {
+                // Show the install prompt
+                deferredPrompt.prompt();
+                
+                // Wait for the user to respond to the prompt
+                const { outcome } = await deferredPrompt.userChoice;
+                
+                if (outcome === 'accepted') {
+                    console.log('User accepted the install prompt');
+                } else {
+                    console.log('User dismissed the install prompt');
+                }
+                
+                // Clear the deferredPrompt
+                deferredPrompt = null;
             }
-            
-            // Clear the deferredPrompt
-            deferredPrompt = null;
-        } else {
-            // PWA is not installable, show alternative
-            showInstallInstructions();
-        }
-    });
+        });
+    }
+    // Otherwise, the link will work normally and navigate to the app
 });
 
 // Show install instructions for different platforms
