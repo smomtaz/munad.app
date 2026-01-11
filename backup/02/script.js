@@ -12,104 +12,87 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Screenshot Carousel in Phone Mockup
+// Screenshot Carousel
 let currentSlide = 0;
-const screenshots = document.querySelectorAll('.app-screenshot');
-const indicators = document.querySelectorAll('.indicator');
-let autoSlideInterval;
+const slides = document.querySelectorAll('.screenshot-slide');
+const dots = document.querySelectorAll('.dot');
+const track = document.querySelector('.carousel-track');
+const prevBtn = document.querySelector('.carousel-btn.prev');
+const nextBtn = document.querySelector('.carousel-btn.next');
 
-function showSlide(index) {
-    // Remove active class from all screenshots and indicators
-    screenshots.forEach(screenshot => {
-        screenshot.classList.remove('active');
-    });
-    indicators.forEach(indicator => {
-        indicator.classList.remove('active');
-    });
-    
-    // Add active class to current slide and indicator
-    if (screenshots[index]) {
-        screenshots[index].classList.add('active');
-    }
-    if (indicators[index]) {
-        indicators[index].classList.add('active');
+function updateCarousel() {
+    if (track) {
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
     }
 }
 
 function nextSlide() {
-    currentSlide = (currentSlide + 1) % screenshots.length;
-    showSlide(currentSlide);
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateCarousel();
 }
 
-function previousSlide() {
-    currentSlide = (currentSlide - 1 + screenshots.length) % screenshots.length;
-    showSlide(currentSlide);
+function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    updateCarousel();
 }
 
-// Indicator click handlers
-indicators.forEach((indicator, index) => {
-    indicator.addEventListener('click', () => {
+// Button controls
+if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+// Dot controls
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
         currentSlide = index;
-        showSlide(currentSlide);
-        // Reset auto-advance timer
-        clearInterval(autoSlideInterval);
-        autoSlideInterval = setInterval(nextSlide, 4000);
+        updateCarousel();
     });
 });
 
-// Start auto-advance
-function startAutoSlide() {
-    autoSlideInterval = setInterval(nextSlide, 4000); // Change every 4 seconds
-}
+// Auto-advance carousel
+let autoSlideInterval = setInterval(nextSlide, 4000);
 
-// Pause on hover
-const phoneMockup = document.querySelector('.phone-mockup');
-if (phoneMockup) {
-    phoneMockup.addEventListener('mouseenter', () => {
+// Pause auto-advance on hover
+const carousel = document.querySelector('.screenshot-carousel');
+if (carousel) {
+    carousel.addEventListener('mouseenter', () => {
         clearInterval(autoSlideInterval);
     });
     
-    phoneMockup.addEventListener('mouseleave', () => {
-        startAutoSlide();
+    carousel.addEventListener('mouseleave', () => {
+        autoSlideInterval = setInterval(nextSlide, 4000);
     });
 }
 
-// Initialize carousel
-if (screenshots.length > 0) {
-    showSlide(0);
-    startAutoSlide();
-}
-
-// Touch swipe support for mobile
+// Swipe support for mobile
 let touchStartX = 0;
 let touchEndX = 0;
 
-if (phoneMockup) {
-    phoneMockup.addEventListener('touchstart', (e) => {
+if (carousel) {
+    carousel.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
+    });
     
-    phoneMockup.addEventListener('touchend', (e) => {
+    carousel.addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }, { passive: true });
+        handleSwipeGesture();
+    });
 }
 
-function handleSwipe() {
+function handleSwipeGesture() {
     const swipeThreshold = 50;
     const diff = touchStartX - touchEndX;
     
     if (Math.abs(diff) > swipeThreshold) {
         if (diff > 0) {
-            // Swiped left - next slide
             nextSlide();
         } else {
-            // Swiped right - previous slide
-            previousSlide();
+            prevSlide();
         }
-        // Reset auto-advance
-        clearInterval(autoSlideInterval);
-        autoSlideInterval = setInterval(nextSlide, 4000);
     }
 }
 
@@ -233,14 +216,14 @@ updatePrayerTimes();
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const heroPattern = document.querySelector('.hero-pattern');
-    const phoneMockup = document.querySelector('.phone-mockup');
+    const carousel = document.querySelector('.screenshot-carousel');
     
     if (heroPattern) {
         heroPattern.style.transform = `translateY(${scrolled * 0.5}px)`;
     }
     
-    if (phoneMockup && scrolled < window.innerHeight) {
-        phoneMockup.style.transform = `translateY(${-scrolled * 0.15}px)`;
+    if (carousel && scrolled < window.innerHeight) {
+        carousel.style.transform = `translateY(${-scrolled * 0.1}px)`;
     }
 });
 
