@@ -742,6 +742,17 @@ body {
     font-weight: 600;
 }
 
+.basmala-top {
+    font-family: var(--font-arabic);
+    font-size: 24px;
+    color: #FFD700 !important;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    line-height: 1.8;
+}
+
 .footer-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
