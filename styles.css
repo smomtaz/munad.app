@@ -168,6 +168,26 @@ body {
     color: #FFFFFF;
 }
 
+.hero-title .basmala {
+    font-family: var(--font-arabic);
+    font-size: 28px;
+    color: #FFD700;
+    display: block;
+    margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.hero-title .basmala {
+    font-family: var(--font-arabic);
+    font-size: 28px;
+    color: #FFD700;
+    display: block;
+    margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
 .brand-large {
     display: block;
     color: #FFFFFF;

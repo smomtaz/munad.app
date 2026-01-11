@@ -1,4 +1,128 @@
-// Smooth scrolling for navigation links
+// ==============================================
+// SCREENSHOT CAROUSEL - Fixed Version
+// ==============================================
+// Wait for DOM to be fully loaded before initializing carousel
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, initializing carousel...');
+    
+    // Screenshot Carousel in Phone Mockup
+    let currentSlide = 0;
+    const screenshots = document.querySelectorAll('.app-screenshot');
+    const indicators = document.querySelectorAll('.indicator');
+    let autoSlideInterval;
+
+    console.log('Found screenshots:', screenshots.length);
+    console.log('Found indicators:', indicators.length);
+
+    function showSlide(index) {
+        // Remove active class from all screenshots and indicators
+        screenshots.forEach(screenshot => {
+            screenshot.classList.remove('active');
+        });
+        indicators.forEach(indicator => {
+            indicator.classList.remove('active');
+        });
+        
+        // Add active class to current slide and indicator
+        if (screenshots[index]) {
+            screenshots[index].classList.add('active');
+            console.log('Showing screenshot', index + 1);
+        }
+        if (indicators[index]) {
+            indicators[index].classList.add('active');
+        }
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % screenshots.length;
+        showSlide(currentSlide);
+    }
+
+    function previousSlide() {
+        currentSlide = (currentSlide - 1 + screenshots.length) % screenshots.length;
+        showSlide(currentSlide);
+    }
+
+    // Indicator click handlers
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            console.log('Clicked indicator', index + 1);
+            currentSlide = index;
+            showSlide(currentSlide);
+            // Reset auto-advance timer
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(nextSlide, 4000);
+        });
+    });
+
+    // Start auto-advance
+    function startAutoSlide() {
+        console.log('Starting auto-slide...');
+        autoSlideInterval = setInterval(nextSlide, 4000); // Change every 4 seconds
+    }
+
+    // Pause on hover
+    const phoneMockup = document.querySelector('.phone-mockup');
+    if (phoneMockup) {
+        phoneMockup.addEventListener('mouseenter', () => {
+            console.log('Pausing carousel (mouse enter)');
+            clearInterval(autoSlideInterval);
+        });
+        
+        phoneMockup.addEventListener('mouseleave', () => {
+            console.log('Resuming carousel (mouse leave)');
+            startAutoSlide();
+        });
+    }
+
+    // Initialize carousel
+    if (screenshots.length > 0) {
+        console.log('Initializing carousel with', screenshots.length, 'screenshots');
+        showSlide(0);
+        startAutoSlide();
+    } else {
+        console.error('ERROR: No screenshots found! Check image file names.');
+    }
+
+    // Touch swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    if (phoneMockup) {
+        phoneMockup.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        phoneMockup.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+    }
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                // Swiped left - next slide
+                console.log('Swiped left');
+                nextSlide();
+            } else {
+                // Swiped right - previous slide
+                console.log('Swiped right');
+                previousSlide();
+            }
+            // Reset auto-advance
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(nextSlide, 4000);
+        }
+    }
+});
+
+// ==============================================
+// SMOOTH SCROLLING
+// ==============================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -12,108 +136,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Screenshot Carousel in Phone Mockup
-let currentSlide = 0;
-const screenshots = document.querySelectorAll('.app-screenshot');
-const indicators = document.querySelectorAll('.indicator');
-let autoSlideInterval;
-
-function showSlide(index) {
-    // Remove active class from all screenshots and indicators
-    screenshots.forEach(screenshot => {
-        screenshot.classList.remove('active');
-    });
-    indicators.forEach(indicator => {
-        indicator.classList.remove('active');
-    });
-    
-    // Add active class to current slide and indicator
-    if (screenshots[index]) {
-        screenshots[index].classList.add('active');
-    }
-    if (indicators[index]) {
-        indicators[index].classList.add('active');
-    }
-}
-
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % screenshots.length;
-    showSlide(currentSlide);
-}
-
-function previousSlide() {
-    currentSlide = (currentSlide - 1 + screenshots.length) % screenshots.length;
-    showSlide(currentSlide);
-}
-
-// Indicator click handlers
-indicators.forEach((indicator, index) => {
-    indicator.addEventListener('click', () => {
-        currentSlide = index;
-        showSlide(currentSlide);
-        // Reset auto-advance timer
-        clearInterval(autoSlideInterval);
-        autoSlideInterval = setInterval(nextSlide, 4000);
-    });
-});
-
-// Start auto-advance
-function startAutoSlide() {
-    autoSlideInterval = setInterval(nextSlide, 4000); // Change every 4 seconds
-}
-
-// Pause on hover
-const phoneMockup = document.querySelector('.phone-mockup');
-if (phoneMockup) {
-    phoneMockup.addEventListener('mouseenter', () => {
-        clearInterval(autoSlideInterval);
-    });
-    
-    phoneMockup.addEventListener('mouseleave', () => {
-        startAutoSlide();
-    });
-}
-
-// Initialize carousel
-if (screenshots.length > 0) {
-    showSlide(0);
-    startAutoSlide();
-}
-
-// Touch swipe support for mobile
-let touchStartX = 0;
-let touchEndX = 0;
-
-if (phoneMockup) {
-    phoneMockup.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-    
-    phoneMockup.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }, { passive: true });
-}
-
-function handleSwipe() {
-    const swipeThreshold = 50;
-    const diff = touchStartX - touchEndX;
-    
-    if (Math.abs(diff) > swipeThreshold) {
-        if (diff > 0) {
-            // Swiped left - next slide
-            nextSlide();
-        } else {
-            // Swiped right - previous slide
-            previousSlide();
-        }
-        // Reset auto-advance
-        clearInterval(autoSlideInterval);
-        autoSlideInterval = setInterval(nextSlide, 4000);
-    }
-}
-
-// Navbar scroll effect
+// ==============================================
+// NAVBAR SCROLL EFFECT
+// ==============================================
 let lastScroll = 0;
 const navbar = document.querySelector('.navbar');
 
@@ -129,7 +154,9 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Animate on scroll
+// ==============================================
+// ANIMATE ON SCROLL
+// ==============================================
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
@@ -155,7 +182,9 @@ document.querySelectorAll('[data-aos-delay]').forEach((el, index) => {
     el.style.transitionDelay = `${delay}ms`;
 });
 
-// Install button functionality
+// ==============================================
+// PWA INSTALL BUTTON FUNCTIONALITY
+// ==============================================
 const installButtons = document.querySelectorAll('.btn-install');
 let deferredPrompt;
 
@@ -196,7 +225,9 @@ installButtons.forEach(btn => {
     // Otherwise, the link will work normally and navigate to the app
 });
 
-// Show install instructions for different platforms
+// ==============================================
+// SHOW INSTALL INSTRUCTIONS
+// ==============================================
 function showInstallInstructions() {
     const userAgent = navigator.userAgent.toLowerCase();
     let instructions = '';
@@ -212,24 +243,9 @@ function showInstallInstructions() {
     alert(instructions);
 }
 
-// Update prayer times in the phone mockup (demo)
-function updatePrayerTimes() {
-    const now = new Date();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    
-    // This is just for demo purposes
-    const timeElement = document.querySelector('.time');
-    if (timeElement) {
-        timeElement.textContent = `${hours}:${minutes.toString().padStart(2, '0')}`;
-    }
-}
-
-// Update time every minute
-setInterval(updatePrayerTimes, 60000);
-updatePrayerTimes();
-
-// Add parallax effect to hero section
+// ==============================================
+// PARALLAX EFFECT
+// ==============================================
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const heroPattern = document.querySelector('.hero-pattern');
@@ -244,7 +260,9 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Add interactive hover effect to feature cards
+// ==============================================
+// INTERACTIVE HOVER EFFECT ON FEATURE CARDS
+// ==============================================
 document.querySelectorAll('.feature-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
         this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
@@ -269,7 +287,9 @@ document.querySelectorAll('.feature-card').forEach(card => {
     });
 });
 
-// Add smooth reveal animation for sections
+// ==============================================
+// REVEAL ANIMATION FOR SECTIONS
+// ==============================================
 const revealSections = document.querySelectorAll('section');
 const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -285,7 +305,9 @@ revealSections.forEach(section => {
     revealObserver.observe(section);
 });
 
-// Add floating animation to decorative elements
+// ==============================================
+// FLOATING ANIMATION FOR ICONS
+// ==============================================
 function createFloatingAnimation() {
     const floatingElements = document.querySelectorAll('.feature-icon');
     
@@ -296,23 +318,9 @@ function createFloatingAnimation() {
 
 createFloatingAnimation();
 
-// Simulate prayer time updates in the mockup
-function simulatePrayerNotification() {
-    const nextPrayer = document.querySelector('.next-prayer');
-    
-    if (nextPrayer) {
-        setInterval(() => {
-            nextPrayer.style.transform = 'scale(1.02)';
-            setTimeout(() => {
-                nextPrayer.style.transform = 'scale(1)';
-            }, 300);
-        }, 10000); // Pulse every 10 seconds
-    }
-}
-
-simulatePrayerNotification();
-
-// Add loading animation
+// ==============================================
+// PAGE LOAD ANIMATIONS
+// ==============================================
 window.addEventListener('load', () => {
     document.body.classList.add('loaded');
     
@@ -327,7 +335,9 @@ window.addEventListener('load', () => {
     }, 100);
 });
 
-// Easter egg: Konami code for special message
+// ==============================================
+// EASTER EGG: KONAMI CODE
+// ==============================================
 let konamiCode = [];
 const konamiPattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
 
@@ -367,42 +377,9 @@ function showSpecialMessage() {
     }, 3000);
 }
 
-// Track scroll depth for analytics (privacy-friendly)
-let maxScrollDepth = 0;
-window.addEventListener('scroll', () => {
-    const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-    maxScrollDepth = Math.max(maxScrollDepth, scrollPercentage);
-});
-
-// Add touch gestures for mobile
-let touchStartX = 0;
-let touchEndX = 0;
-
-document.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-});
-
-document.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-});
-
-function handleSwipe() {
-    const swipeThreshold = 50;
-    const diff = touchStartX - touchEndX;
-    
-    if (Math.abs(diff) > swipeThreshold) {
-        if (diff > 0) {
-            // Swiped left
-            console.log('Swiped left');
-        } else {
-            // Swiped right
-            console.log('Swiped right');
-        }
-    }
-}
-
-// Performance optimization: Lazy load images
+// ==============================================
+// LAZY LOAD IMAGES
+// ==============================================
 if ('IntersectionObserver' in window) {
     const imageObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -422,6 +399,9 @@ if ('IntersectionObserver' in window) {
     });
 }
 
+// ==============================================
+// CONSOLE BRANDING
+// ==============================================
 console.log('%cMunad - مُناد', 'font-size: 24px; color: #0D7377; font-weight: bold;');
 console.log('%cYour Call to Prayer', 'font-size: 14px; color: #D4AF37;');
 console.log('%cMade with ❤️ for the Ummah', 'font-size: 12px; color: #666;');
