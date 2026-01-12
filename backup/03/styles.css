@@ -160,17 +160,6 @@ body {
     color: #FFFFFF !important;
 }
 
-.basmala-top {
-    font-family: var(--font-arabic);
-    font-size: 24px;
-    color: #FFD700 !important;
-    text-align: center;
-    margin-bottom: 25px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    line-height: 1.8;
-}
-
 .hero-title {
     font-size: 64px;
     font-weight: 700;
@@ -355,14 +344,11 @@ body {
     top: 0;
     left: 0;
     opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
-    z-index: 0;
+    transition: opacity 1s ease-in-out;
 }
 
 .app-screenshot.active {
     opacity: 1;
-    visibility: visible;
     z-index: 1;
 }
 
@@ -756,6 +742,17 @@ body {
     font-weight: 600;
 }
 
+.basmala-top {
+    font-family: var(--font-arabic);
+    font-size: 24px;
+    color: #FFD700 !important;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    line-height: 1.8;
+}
+
 .footer-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -918,303 +915,5 @@ body {
     
     .indicator.active {
         width: 18px;
-    }
-}
-
-/* Trust Badges in Hero */
-.trust-badges {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 30px;
-    padding: 15px 25px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.shield-icon {
-    flex-shrink: 0;
-    stroke: #FFD700;
-}
-
-.trust-text {
-    color: #FFFFFF;
-    font-size: 14px;
-    font-weight: 500;
-    opacity: 0.95;
-}
-
-/* Feature Cards with Top Border (Shed) */
-.feature-card {
-    background: white;
-    border-radius: 15px;
-    padding: 40px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    border: none;
-    position: relative;
-    overflow: visible;
-}
-
-.feature-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 5px;
-    background: var(--gradient-primary);
-    border-radius: 15px 15px 0 0;
-}
-
-.feature-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 35px rgba(13, 115, 119, 0.2);
-}
-
-/* Platform Compatibility Boxes */
-.compatibility {
-    text-align: center;
-    margin-top: 50px;
-}
-
-.compatibility-title {
-    font-size: 32px;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 40px;
-}
-
-.platform-icons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
-}
-
-.platform-box {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 20px;
-    padding: 20px;
-    width: 130px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    transition: all 0.3s ease;
-}
-
-.platform-box:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-5px);
-    border-color: #FFD700;
-}
-
-.platform-box .platform-icon {
-    width: 50px;
-    height: 50px;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.platform-box span {
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.pwa-note, .pwa-info {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 15px;
-    margin-top: 15px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.pwa-info {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 15px 25px;
-    border-radius: 10px;
-    border-left: 3px solid #FFD700;
-}
-
-/* Footer New Design */
-.footer-brand {
-    max-width: 400px;
-}
-
-.footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.footer-logo-img {
-    width: 60px;
-    height: 60px;
-    border-radius: 12px;
-}
-
-.footer-brand-name {
-    font-size: 28px;
-    font-weight: 700;
-    color: white;
-}
-
-.footer-arabic {
-    font-family: var(--font-arabic);
-    color: #FFD700;
-    font-size: 24px;
-    margin-left: 8px;
-}
-
-.footer-tagline {
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.7;
-    margin-bottom: 25px;
-    font-size: 15px;
-}
-
-.disclaimer-box {
-    background: rgba(255, 215, 0, 0.1);
-    border: 1px solid rgba(255, 215, 0, 0.3);
-    border-radius: 12px;
-    padding: 20px;
-    display: flex;
-    gap: 15px;
-    margin-top: 25px;
-}
-
-.disclaimer-box svg {
-    flex-shrink: 0;
-}
-
-.disclaimer-box strong {
-    color: #FFD700;
-    display: block;
-    margin-bottom: 8px;
-    font-size: 16px;
-}
-
-.disclaimer-box p {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 14px;
-    line-height: 1.6;
-    margin: 0 0 10px 0;
-}
-
-.disclaimer-link {
-    color: #FFD700;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.disclaimer-link:hover {
-    text-decoration: underline;
-}
-
-.trust-badges-footer {
-    margin-top: 25px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.trust-badge {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 14px;
-}
-
-.trust-badge svg {
-    flex-shrink: 0;
-}
-
-.footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    margin-top: 40px;
-}
-
-.footer-bottom-left p {
-    margin-bottom: 5px;
-}
-
-.footer-bottom-right {
-    text-align: right;
-}
-
-.arabic-blessing {
-    font-family: var(--font-arabic);
-    font-size: 20px;
-    color: #FFD700;
-    margin-bottom: 5px;
-    font-weight: 600;
-}
-
-.arabic-blessing-translation {
-    font-size: 13px;
-    color: rgba(255, 255, 255, 0.7);
-    font-style: italic;
-}
-
-/* Mobile Responsive Updates */
-@media (max-width: 768px) {
-    .trust-badges {
-        flex-direction: column;
-        text-align: center;
-        padding: 15px 20px;
-    }
-    
-    .trust-text {
-        font-size: 13px;
-    }
-    
-    .platform-icons {
-        gap: 15px;
-    }
-    
-    .platform-box {
-        width: 100px;
-        padding: 15px;
-    }
-    
-    .platform-box .platform-icon {
-        width: 40px;
-        height: 40px;
-    }
-    
-    .disclaimer-box {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .footer-bottom {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-    }
-    
-    .footer-bottom-right {
-        text-align: center;
-    }
-    
-    .trust-badges-footer {
-        align-items: flex-start;
     }
 }
