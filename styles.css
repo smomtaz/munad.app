@@ -1360,3 +1360,29 @@ body {
         padding: 15px 30px;
     }
 }
+
+/* Platform boxes without text - adjust sizing */
+.platform-box {
+    width: 100px;
+    height: 100px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.platform-box .platform-icon {
+    width: 60px;
+    height: 60px;
+}
+
+@media (max-width: 768px) {
+    .platform-box {
+        width: 80px;
+        height: 80px;
+        padding: 15px;
+    }
+    
+    .platform-box .platform-icon {
+        width: 50px;
+        height: 50px;
+    }
+}
